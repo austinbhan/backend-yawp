@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS restaurants;
 CREATE TABLE users (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     email TEXT NOT NULL,
-    password_has TEXT NOT NULL
+    password_hash TEXT NOT NULL
 );
 
 CREATE TABLE restaurants (
