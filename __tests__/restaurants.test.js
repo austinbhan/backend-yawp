@@ -1,6 +1,6 @@
 const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
-const { request } = require('../lib/app');
+const request = require('supertest');
 const app = require('../lib/app');
 
 describe('backend-express-template routes', () => {
@@ -18,6 +18,7 @@ describe('backend-express-template routes', () => {
       { id: '5', name: 'Chik Fil-A', description: 'Eet Mor Chikin' },
       { id: '6', name: 'Raising Canes', description: 'Chicken Fingers' }        
     ];
+    expect(res.status).toEqual(200);
     expect(res.body).toEqual(expected);
   });
 });
