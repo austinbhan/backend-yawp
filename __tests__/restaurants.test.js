@@ -1,0 +1,23 @@
+const pool = require('../lib/utils/pool');
+const setup = require('../data/setup');
+const { request } = require('../lib/app');
+const app = require('../lib/app');
+
+describe('backend-express-template routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+
+  it('#GET should return list of restaurants', async () => {
+    const res = await request(app).get('/restaurants');
+    const expected = [
+      { id: '1', name: 'Bojangles', description: 'Fresh Biscuits' },
+      { id: '2', name: 'Sonic', description: 'Roller skating barhops' },
+      { id: '3', name: 'Zaxbys', description: 'Nuclear Fried Chicken' },
+      { id: '4', name: 'Popeyes', description: 'Cajun Chicken' },
+      { id: '5', name: 'Chik Fil-A', description: 'Eet Mor Chikin' },
+      { id: '6', name: 'Raising Canes', description: 'Chicken Fingers' }        
+    ];
+    expect(res.body).toEqual(expected);
+  });
+});

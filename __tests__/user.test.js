@@ -43,7 +43,7 @@ describe('backend-express-template routes', () => {
     });
     expect(res.body).toEqual({ message: 'Signed in Successfully' });
   });
-  it('/users should show list of users if user is admin', async () => {
+  it.skip('/users should show list of users if user is admin', async () => {
     const agent = request.agent(app);
     await agent.post('/api/v1/users').send({
       email: 'admin',
