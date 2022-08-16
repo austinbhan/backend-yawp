@@ -15,6 +15,9 @@ CREATE TABLE restaurants (
     name VARCHAR NOT NULL,
     description VARCHAR NOT NULL
 );
+INSERT INTO users (email, password_hash) VALUES
+    ('bigchungus@hi.com', '12345');
+
 
 INSERT INTO restaurants (name, description) VALUES
     ('Bojangles', 'Fresh Biscuits'),
