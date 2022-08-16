@@ -33,4 +33,15 @@ describe('backend-express-template routes', () => {
       email,
     });
   });
+  it('#POST sign in an existing user', async () => {
+    const agent = request.agent(app);
+    await agent.post('/api/v1/users').send(mockUser);
+    const { email, password } = mockUser;
+    const res = await agent.post('/api/v1/users/sessions').send({
+      email,
+      password
+    });
+    expect(res.body).toEqual({ message: 'Signed in Successfully' });
+
+  });
 });
