@@ -37,6 +37,7 @@ describe('backend-express-template routes', () => {
     const agent = request.agent(app);
     await agent.post('/api/v1/users').send(mockUser);
     const { email, password } = mockUser;
+    // console.log(mockUser, 'Test'); //Mockuser Token
     const res = await agent.post('/api/v1/users/sessions').send({
       email,
       password
