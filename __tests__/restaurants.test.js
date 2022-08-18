@@ -8,8 +8,8 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it.skip('#GET should return list of restaurants', async () => {
-    const res = await request(app).get('/restaurants');
+  it('#GET should return list of restaurants', async () => {
+    const res = await request(app).get('/api/v1/restaurants');
     const expected = [
       { id: '1', name: 'Bojangles', description: 'Fresh Biscuits' },
       { id: '2', name: 'Sonic', description: 'Roller skating barhops' },
@@ -22,8 +22,8 @@ describe('backend-express-template routes', () => {
     expect(res.body).toEqual(expected);
   });
 
-  it.skip('#GET should return a restaurant id', async () => {
-    const resp = await request(app).get('/restaurants/2');
+  it('#GET should return a restaurant id', async () => {
+    const resp = await request(app).get('/api/v1/restaurants/2');
     expect(resp.status).toBe(200);
     expect(resp.body).toEqual({
       id: '2',

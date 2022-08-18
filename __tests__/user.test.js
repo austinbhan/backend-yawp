@@ -24,7 +24,7 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it.skip('#POST create a new user', async () => {
+  it('#POST create a new user', async () => {
     const res = await request(app).post('/api/v1/users').send(mockUser);
     const { email } = mockUser;
 
@@ -33,7 +33,7 @@ describe('backend-express-template routes', () => {
       email,
     });
   });
-  it.skip('#POST sign in an existing user', async () => {
+  it('#POST sign in an existing user', async () => {
     const agent = request.agent(app);
     await agent.post('/api/v1/users').send(mockUser);
     const { email, password } = mockUser;
@@ -43,7 +43,7 @@ describe('backend-express-template routes', () => {
     });
     expect(res.body).toEqual({ message: 'Signed in Successfully' });
   });
-  it.skip('/users should show list of users if user is admin', async () => {
+  it('/users should show list of users if user is admin', async () => {
     const agent = request.agent(app);
     await agent.post('/api/v1/users').send({
       email: 'admin',

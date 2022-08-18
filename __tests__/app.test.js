@@ -7,7 +7,7 @@ describe('backend-express-template routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it.skip('example test - delete me!', () => {
+  it('example test - delete me!', () => {
     expect(1).toEqual(1);
   });
   afterAll(() => {
