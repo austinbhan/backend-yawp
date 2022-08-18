@@ -29,16 +29,16 @@ describe('backend-express-template routes', () => {
   });
 
   it('#DELETE. If logged in or admin, delete a restaurant review', async () => {
-    // const agent = request.agent(app);
-    // await agent.post('/api/v1/users').send({
-    //   email: 'admin',
-    //   password: '1234',
-    // });
-    // await agent
-    //   .post('/api/v1/users/sessions')
-    //   .send({ email: 'admin', password: '1234' });
+    const agent = request.agent(app);
+    await agent.post('/api/v1/users').send({
+      email: 'admin',
+      password: '1234',
+    });
+    await agent
+      .post('/api/v1/users/sessions')
+      .send({ email: 'admin', password: '1234' });
 
-    const resp = await request(app).delete('/api/v1/reviews/1');
+    const resp = await agent.delete('/api/v1/reviews/1');
     expect(resp.status).toBe(200);
   });
 
