@@ -56,7 +56,9 @@ describe('backend-express-template routes', () => {
     const res = await agent.get('/api/v1/users');
     expect(res.status).toEqual(200);
     console.log(res.body);
-    
+  });
+  afterAll(() => {
+    pool.end();
   });
 
 });

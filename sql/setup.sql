@@ -1,9 +1,9 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS restaurants;
-DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS restaurants CASCADE;
+DROP TABLE IF EXISTS restaurant_reviews CASCADE;
 
 CREATE TABLE users (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -17,13 +17,6 @@ CREATE TABLE restaurants (
     description VARCHAR NOT NULL
 );
 
-CREATE TABLE reviews (
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id BIGINT,
-    restaurant_id BIGINT,
-    stars BIGINT,
-    detail VARCHAR
-);
 
 INSERT INTO users (email) VALUES
     ('biggus@dikkus.com'),
@@ -38,10 +31,21 @@ INSERT INTO restaurants (name, description) VALUES
     ('Chik Fil-A', 'Eet Mor Chikin'),
     ('Raising Canes', 'Chicken Fingers');
 
-INSERT INTO reviews (user_id, restaurant_id, stars, detail) VALUES
-    ('1', '1', '5', 'Dillon! You sonuva bitch!'),
-    ('1', '2', '4', 'Its not a tumor!'),
-    ('1', '3', '3', 'Ill Be Back'),
-    ('2', '4', '2', 'Come with me if you want to live'),
-    ('3', '5', '1', 'Give these people air!'),
-    ('3', '6', '5', 'I lied');    
+CREATE TABLE restaurant_reviews (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    stars BIGINT,
+    details VARCHAR,
+    user_id BIGINT,
+    restaurant_id BIGINT, 
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+);
+
+
+INSERT INTO restaurant_reviews (user_id, restaurant_id, stars, details) VALUES
+    (1, 1, 5, 'I like chicken'),
+    (1, 2, 4, 'I like chicken too'),
+    (1, 3, 3, 'I like chicken three'),
+    (2, 4, 2, 'I like chicken four'),
+    (3, 5, 1, 'I like chicken five'),
+    (3, 6, 5, 'I dont like chicken');    
