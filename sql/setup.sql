@@ -41,7 +41,6 @@ CREATE TABLE restaurant_reviews (
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
 );
 
-
 INSERT INTO restaurant_reviews (user_id, restaurant_id, stars, details) VALUES
     (1, 1, 5, 'I like chicken'),
     (1, 2, 4, 'I like chicken too'),

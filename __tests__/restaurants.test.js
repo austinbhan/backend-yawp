@@ -22,12 +22,14 @@ describe('backend-express-template routes', () => {
     expect(res.body).toEqual(expected);
   });
 
-  it('#GET should return a restaurant id', async () => {
+  it('#GET should return a restaurant name, description and their review', async () => {
     const resp = await request(app).get('/api/v1/restaurants/2');
+    console.log(resp.body);
     expect(resp.status).toBe(200);
     expect(resp.body).toEqual({
-      id: '2',
       name: 'Sonic',
+      stars: '4',
+      details: 'I like chicken too',
       description: 'Roller skating barhops'
     });
   });

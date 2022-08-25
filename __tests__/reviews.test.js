@@ -41,8 +41,4 @@ describe('backend-express-template routes', () => {
     const resp = await agent.delete('/api/v1/reviews/1');
     expect(resp.status).toBe(200);
   });
-
-  afterAll(() => {
-    pool.end();
-  });
 });
